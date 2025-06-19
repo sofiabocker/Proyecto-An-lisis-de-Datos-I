@@ -7708,8 +7708,6 @@ Mejor puntuación: 0.8777575172636816
     <span class="n">ccp_alpha</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">()</span>
 <span class="p">)</span>
 
-<span class="c1"># mdl_tree_scoring_cal.train_model(tree.DecisionTreeClassifier(), param_distributions=param_distributions)</span>
-
 <span class="n">modelo_cal</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
 <span class="n">modelo_optimo_cal</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">modelo_cal</span><span class="p">,</span>
                                         <span class="n">param_distributions</span> <span class="o">=</span> <span class="n">param_distributions</span><span class="p">,</span>
@@ -7811,8 +7809,6 @@ El optimizador probablemente encontró hiperparámetros que generalizan mejor y 
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># versión que optimiza la métrica de F1 Score</span>
 
-<span class="c1"># mdl_tree_scoring_cal.train_model(tree.DecisionTreeClassifier(), param_distributions=param_distributions)</span>
-
 <span class="n">modelo_f1</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
 <span class="n">modelo_optimo_f1</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">modelo_f1</span><span class="p">,</span>
                                         <span class="n">param_distributions</span> <span class="o">=</span> <span class="n">param_distributions</span><span class="p">,</span>
@@ -7859,7 +7855,8 @@ Mejor puntuación: 0.8869993198343534
 <div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_pred_prob_f1</span> <span class="o">=</span> <span class="n">modelo_f1</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Graficar curva ROC</span>
+<span class="n">y_pred_prob_f1</span> <span class="o">=</span> <span class="n">modelo_f1</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">fpr_f1</span><span class="p">,</span> <span class="n">tpr_f1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_prob_f1</span><span class="p">)</span>
 <span class="n">roc_auc_f1</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr_f1</span><span class="p">,</span> <span class="n">tpr_f1</span><span class="p">)</span>
 
@@ -7900,8 +7897,6 @@ Mejor puntuación: 0.8869993198343534
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># versión que optimiza la métrica de precision</span>
-
-<span class="c1"># mdl_tree_scoring_cal.train_model(tree.DecisionTreeClassifier(), param_distributions=param_distributions)</span>
 
 <span class="n">modelo_p</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
 <span class="n">modelo_optimo_p</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">modelo_p</span><span class="p">,</span>
@@ -7949,7 +7944,8 @@ Mejor puntuación: 0.8851331279124958
 <div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_pred_prob_p</span> <span class="o">=</span> <span class="n">modelo_p</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Graficar curva ROC</span>
+<span class="n">y_pred_prob_p</span> <span class="o">=</span> <span class="n">modelo_p</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">fpr_p</span><span class="p">,</span> <span class="n">tpr_p</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_prob_p</span><span class="p">)</span>
 <span class="n">roc_auc_p</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr_p</span><span class="p">,</span> <span class="n">tpr_p</span><span class="p">)</span>
 
@@ -7990,8 +7986,6 @@ Mejor puntuación: 0.8851331279124958
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># versión que optimiza la métrica de recall</span>
-
-<span class="c1"># mdl_tree_scoring_cal.train_model(tree.DecisionTreeClassifier(), param_distributions=param_distributions)</span>
 
 <span class="n">modelo_r</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
 <span class="n">modelo_optimo_r</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">modelo_r</span><span class="p">,</span>
@@ -8039,7 +8033,8 @@ Mejor puntuación: 0.900613332715211
 <div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_pred_prob_r</span> <span class="o">=</span> <span class="n">modelo_r</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Graficar curva ROC</span>
+<span class="n">y_pred_prob_r</span> <span class="o">=</span> <span class="n">modelo_r</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">fpr_r</span><span class="p">,</span> <span class="n">tpr_r</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_prob_r</span><span class="p">)</span>
 <span class="n">roc_auc_r</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr_r</span><span class="p">,</span> <span class="n">tpr_r</span><span class="p">)</span>
 
